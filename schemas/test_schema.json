@@ -1,0 +1,28 @@
+{
+    "$id": "test_schema",
+    "type": "array",
+    "items":
+        {
+        "type": "object",
+        "properties": {
+            "00080005": {
+                "type": "object",
+                "properties": {
+                    "vr": {
+                        "type": "string"
+                    },
+                    "Value": {
+                        "type": "array",
+                        "items": 
+                            {
+                            "type": "string"
+                            }
+                    }
+            },
+            "required": [
+                "vr"
+            ]
+        }
+        }
+    }
+}
