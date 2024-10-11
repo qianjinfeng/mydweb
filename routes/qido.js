@@ -5,12 +5,12 @@ async function qidoRoutes(fastify) {
   fastify.route({
     method: 'GET',
     url: '/studies',
-    // schema: {
-    //   response: {
-    //     // 200: 'studies_schema#',
-    //     200: 'test_schema#',
-    //   },
-    // },
+    schema: {
+      response: {
+        // 200: 'studies_schema#',
+        200: {$ref: 'test_schema#'},
+      },
+    },
     handler: fastify.getQIDOStudies,
   });
 
