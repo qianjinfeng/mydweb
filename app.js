@@ -24,7 +24,7 @@ module.exports = async function (fastify, opts) {
   fastify.addSchema(testSchema);
 
   // 打印 schema 以进行调试
-  console.log(JSON.stringify(testSchema, null, 2));
+  // console.log(JSON.stringify(testSchema, null, 2));
 
 
   // Do not touch the following lines

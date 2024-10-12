@@ -7,7 +7,6 @@ async function qidoRoutes(fastify) {
     url: '/studies',
     schema: {
       response: {
-        // 200: 'studies_schema#',
         200: {$ref: 'test_schema#'},
       },
     },
@@ -19,20 +18,19 @@ async function qidoRoutes(fastify) {
   fastify.route({
     method: 'GET',
     url: '/studies/:study/series',
-    // schema: {
-    //   params: {
-    //     type: 'object',
-    //     properties: {
-    //       study: {
-    //         type: 'string',
-    //       },
-    //     },
-    //   },
-    //   response: {
-    //     // 200: 'series_schema#',
-    //     200: 'test_schema#',
-    //   },
-    // },
+    schema: {
+      params: {
+        type: 'object',
+        properties: {
+          study: {
+            type: 'string',
+          },
+        },
+      },
+      response: {
+        200: {$ref: 'test_schema#'},
+      },
+    },
 
     handler: fastify.getQIDOSeries,
   });
@@ -42,23 +40,22 @@ async function qidoRoutes(fastify) {
   fastify.route({
     method: 'GET',
     url: '/studies/:study/series/:series/instances',
-    // schema: {
-    //   params: {
-    //     type: 'object',
-    //     properties: {
-    //       study: {
-    //         type: 'string',
-    //       },
-    //       series: {
-    //         type: 'string',
-    //       },
-    //     },
-    //   },
-    //   response: {
-    //     // 200: 'instances_schema#',
-    //     200: 'test_schema#',
-    //   },
-    // },
+    schema: {
+      params: {
+        type: 'object',
+        properties: {
+          study: {
+            type: 'string',
+          },
+          series: {
+            type: 'string',
+          },
+        },
+      },
+      response: {
+        200: {$ref: 'test_schema#'},
+      },
+    },
 
     handler: fastify.getQIDOInstances,
   });
