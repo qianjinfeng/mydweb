@@ -29,7 +29,7 @@ export default async function (fastify, opts) {
           },
         },
         response: {
-          200: {$ref: 'test_schema#'},
+          200: {$ref: 'series_schema#'},
         },
       },
   
@@ -54,7 +54,7 @@ export default async function (fastify, opts) {
           },
         },
         response: {
-          200: {$ref: 'test_schema#'},
+          200: {$ref: 'instances_schema#'},
         },
       },
   

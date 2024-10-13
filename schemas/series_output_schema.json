@@ -9,7 +9,27 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "CS"
+            },
+            "Value": {
+              "type": "array",
+              "items": 
+                {
+                  "type": "string"
+                }
+            }
+          },
+          "required": [
+            "vr"
+          ]
+        },
+        "00080021": {
+          "type": "object",
+          "properties": {
+            "vr": {
+              "type": "string",
+              "const": "DA"
             },
             "Value": {
               "type": "array",
@@ -27,7 +47,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "AE"
             },
             "Value": {
               "type": "array",
@@ -45,7 +66,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "CS"
             },
             "Value": {
               "type": "array",
@@ -63,7 +85,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "CS"
             },
             "Value": {
               "type": "array",
@@ -81,7 +104,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "LO"
             },
             "Value": {
               "type": "array",
@@ -99,7 +123,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "UR"
             },
             "Value": {
               "type": "array",
@@ -117,7 +142,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "UI"
             },
             "Value": {
               "type": "array",
@@ -135,7 +161,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "UI"
             },
             "Value": {
               "type": "array",
@@ -153,7 +180,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "IS"
             },
             "Value": {
               "type": "array",
@@ -171,7 +199,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "IS"
             },
             "Value": {
               "type": "array",
@@ -189,7 +218,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "LO"
             },
             "Value": {
               "type": "array",
@@ -207,7 +237,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "PN"
             },
             "Value": {
               "type": "array",
@@ -232,10 +263,8 @@
       },
       "required": [
         "00080005",
-        "00080056",
         "00080060",
         "0008103E",
-        "00081190",
         "0020000D",
         "0020000E",
         "00200011",

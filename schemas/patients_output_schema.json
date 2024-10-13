@@ -16,7 +16,8 @@
                     }
                 },
                 "vr": {
-                "type": "string"
+                "type": "string",
+                "const": "CS"
                 }
             },
             "required": [
@@ -34,7 +35,8 @@
                     }
                 },
                 "vr": {
-                "type": "string"
+                "type": "string",
+                "const": "UR"
                 }
             },
             "required": [
@@ -52,7 +54,8 @@
                     }
                 },
                 "vr": {
-                "type": "string"
+                "type": "string",
+                "const": "LO"
                 }
             },
             "required": [
@@ -70,7 +73,8 @@
                     }
                 },
                 "vr": {
-                "type": "string"
+                "type": "string",
+                "const": "LO"
                 }
             },
             "required": [
@@ -93,7 +97,8 @@
                     }
                 },
                 "vr": {
-                "type": "string"
+                "type": "string",
+                "const": "PN"
                 }
             },
             "required": [
@@ -111,7 +116,8 @@
                     }
                 },
                 "vr": {
-                "type": "string"
+                "type": "string",
+                "const": "DS"
                 }
             },
             "required": [
@@ -129,7 +135,8 @@
                     }
                 },
                 "vr": {
-                "type": "string"
+                "type": "string",
+                "const": "CS"
                 }
             },
             "required": [

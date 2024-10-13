@@ -33,7 +33,7 @@ export default fp(async function (fastify, opts) {
         res.push(study);
       })
       
-      //fastify.log.info(res);
+      fastify.log.info(res);
       fastify.log.info(res.length);
       
       // const processedData = processData(rawData);
@@ -56,28 +56,77 @@ export default fp(async function (fastify, opts) {
 
   });
 
-  fastify.decorate('getQIDOSeries', (request, reply) => {
-    const res = [];
+  fastify.decorate('getQIDOSeries', async (request, reply) => {
+    try {
+      const res = [];
+   
+      const index = request.query.index || 'series';
+      const query = request.query.query || { match_all: {} };
+      const from = parseInt(request.query.from) || 0;
+      const size = parseInt(request.query.size) || 10;
+  
+      const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
+      fastify.log.info(rawData.total);
+      rawData.hits.forEach((value) => {
+        const study = DicomMetaDictionary.denaturalizeDataset(value);
+        res.push(study);
+      })
+      
+      fastify.log.info(res);
+      fastify.log.info(res.length);
+      
+      // const processedData = processData(rawData);
+  
+      // // 设置响应头中的分页信息
+      // reply.header('X-Total-Count', processedData.total);
+      // reply.header('X-Page-Size', size);
+      // reply.header('X-Current-Page', Math.floor(from / size) + 1);
+      // reply.header('X-Total-Pages', Math.ceil(processedData.total / size));
+  
+      // 返回处理后的数据
+      // reply.send(processedData.data);
 
-    const newobj = {};
-    newobj['00080005'] = { vr: 'CS'};
-    newobj['00080005'].Value = [];
-    newobj['00080005'].Value.push('inseries');
-    res.push(newobj);
+      reply.code(200).send(res);
+    } catch (error) {
+      reply.status(500).send({ error: error.message });
+    }
 
-    reply.code(200).send(res);
   });
 
-  fastify.decorate('getQIDOInstances', (request, reply) => {
-    const res = [];
+  fastify.decorate('getQIDOInstances', async (request, reply) => {
+    try {
+      const res = [];
+   
+      const index = request.query.index || 'instances';
+      const query = request.query.query || { match_all: {} };
+      const from = parseInt(request.query.from) || 0;
+      const size = parseInt(request.query.size) || 10;
+  
+      const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
+      fastify.log.info(rawData.total);
+      rawData.hits.forEach((value) => {
+        const study = DicomMetaDictionary.denaturalizeDataset(value);
+        res.push(study);
+      })
+      
+      fastify.log.info(res.length);
+      
+      // const processedData = processData(rawData);
+  
+      // // 设置响应头中的分页信息
+      // reply.header('X-Total-Count', processedData.total);
+      // reply.header('X-Page-Size', size);
+      // reply.header('X-Current-Page', Math.floor(from / size) + 1);
+      // reply.header('X-Total-Pages', Math.ceil(processedData.total / size));
+  
+      // 返回处理后的数据
+      // reply.send(processedData.data);
 
-    const newobj = {};
-    newobj['00080005'] = { vr: 'CS'};
-    newobj['00080005'].Value = [];
-    newobj['00080005'].Value.push('ininstance');
-    res.push(newobj);
+      reply.code(200).send(res);
+    } catch (error) {
+      reply.status(500).send({ error: error.message });
+    }
 
-    reply.code(200).send(res);
   });
 
 })

@@ -1,8 +1,9 @@
 import path from 'path'
 import AutoLoad from '@fastify/autoload'
 import { fileURLToPath } from 'url'
-import testSchema from './schemas/test_schema.json' assert { type: 'json' }
 import studiesSchema from './schemas/studies_output_schema.json' assert { type: 'json' }
+import seriesSchema from './schemas/series_output_schema.json' assert { type: 'json' }
+import instancesSchema from './schemas/instances_output_schema.json' assert { type: 'json' }
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -23,9 +24,8 @@ export default async function (fastify, opts) {
     // add schemas to fastify to use by id
     // fastify.addSchema(patientsSchema);
     fastify.addSchema(studiesSchema);
-    // fastify.addSchema(seriesSchema);
-    // fastify.addSchema(instancesSchema);
-    fastify.addSchema(testSchema);
+    fastify.addSchema(seriesSchema);
+    fastify.addSchema(instancesSchema);
 
   // Do not touch the following lines
 

@@ -9,7 +9,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "CS"
             },
             "Value": {
               "type": "array",
@@ -27,7 +28,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "DA"
             },
             "Value": {
               "type": "array",
@@ -45,7 +47,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "TM"
             },
             "Value": {
               "type": "array",
@@ -63,7 +66,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "SH"
             },
             "Value": {
               "type": "array",
@@ -81,7 +85,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "AE"
             },
             "Value": {
               "type": "array",
@@ -99,7 +104,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "CS"
             },
             "Value": {
               "type": "array",
@@ -117,7 +123,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "CS"
             },
             "Value": {
               "type": "array",
@@ -135,7 +142,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "PN"
             },
             "Value": {
               "type": "array",
@@ -161,7 +169,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "UR"
             },
             "Value": {
               "type": "array",
@@ -179,7 +188,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "PN"
             },
             "Value": {
               "type": "array",
@@ -205,7 +215,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "LO"
             },
             "Value": {
               "type": "array",
@@ -223,7 +234,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "DA"
             },
             "Value": {
               "type": "array",
@@ -241,7 +253,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "CS"
             },
             "Value": {
               "type": "array",
@@ -259,7 +272,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "UI"
             },
             "Value": {
               "type": "array",
@@ -277,7 +291,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "SH"
             },
             "Value": {
               "type": "array",
@@ -295,7 +310,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "IS"
             },
             "Value": {
               "type": "array",
@@ -313,7 +329,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "IS"
             },
             "Value": {
               "type": "array",
@@ -331,7 +348,8 @@
           "type": "object",
           "properties": {
             "vr": {
-              "type": "string"
+              "type": "string",
+              "const": "LO"
             },
             "Value": {
               "type": "array",
@@ -349,7 +367,6 @@
       "required": [
         "00080020",
         "00080030",
-        "00080090",
         "00100010",
         "00100020",
         "00100030",

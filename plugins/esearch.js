@@ -14,7 +14,7 @@ export default fp(async (fastify) => {
     fastify.decorate('getDataFromElasticsearch', async (index, query, from = 0, size = 10) => {
         try {
             const body = await fastify.elastic.search({
-              index: "studies",
+              index,
               body: {
                 query,
                 from,
