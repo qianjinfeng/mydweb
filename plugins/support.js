@@ -7,6 +7,7 @@ const fp = require('fastify-plugin')
 
 module.exports = fp(async function (fastify, opts) {
 
+
   // needs to support query with following keys
   // StudyDate 00080020
   // StudyTime 00080030
@@ -30,12 +31,14 @@ module.exports = fp(async function (fastify, opts) {
   
       
 
-      const index = request.query.index || 'your-index-name';
+      const index = request.query.index || 'studies';
       const query = request.query.query || { match_all: {} };
       const from = parseInt(request.query.from) || 0;
       const size = parseInt(request.query.size) || 10;
   
       const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
+      
+      fastify.log.info(rawData);
       // const processedData = processData(rawData);
   
       // // 设置响应头中的分页信息
