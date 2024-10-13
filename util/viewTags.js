@@ -1,24 +1,24 @@
 /* eslint-disable */
 const studyTags = [
-    ['studyUID', '0020000D', '', 'UI', 1],
-    ['charset', '00080005', '', 'CS', 1],
-    ['studyDate', '00080020', '', 'DA', 1],
-    ['studyTime', '00080030', '', 'TM', 1],
-    ['accessionNumber', '00080050', '', 'SH', 1],
-    ['instanceAvailability', '00080056', '', 'CS', 1],
-    ['modalitiesInStudy', '00080061', '', 'CS', 1],
-    ['referringPhysicianName', '00080090', '', 'PN', 1],
-    ['timezoneOffsetFromUTC', '00080201', '', 'SH', 0],
-    ['retrieveURL', '00081190', '', 'UR', 1],
-    ['patientName', '00100010', '', 'PN', 1],
-    ['patientID', '00100020', '', 'LO', 1],
-    ['patientBirthDate', '00100030', '', 'DA', 1],
-    ['patientSex', '00100040', '', 'CS', 1],
-    ['studyID', '00200010', '', 'SH', 1],
-    ['numberOfStudyRelatedSeries', '00201206', '', 'IS', 1],
-    ['numberOfStudyRelatedInstances', '00201208', '', 'IS', 1],
-    ['retrieveAETitle', '00080054', '', 'AE', 0],
-    ['studyDescription', '00081030', '', 'LO', 1],
+    ['StudyUID', '0020000D', '', 'UI', 1],
+    ['Charset', '00080005', '', 'CS', 0],  // to be required
+    ['StudyDate', '00080020', '', 'DA', 1],
+    ['StudyTime', '00080030', '', 'TM', 1],
+    ['AccessionNumber', '00080050', '', 'SH', 1],
+    ['InstanceAvailability', '00080056', '', 'CS', 0],
+    ['ModalitiesInStudy', '00080061', '', 'CS', 0],
+    ['ReferringPhysicianName', '00080090', '', 'PN', 1],
+    ['TimezoneOffsetFromUTC', '00080201', '', 'SH', 0],
+    ['RetrieveURL', '00081190', '', 'UR', 0],   // to be required
+    ['PatientName', '00100010', '', 'PN', 1],
+    ['PatientID', '00100020', '', 'LO', 1],
+    ['PatientBirthDate', '00100030', '', 'DA', 1],
+    ['PatientSex', '00100040', '', 'CS', 1],
+    ['StudyID', '00200010', '', 'SH', 1],
+    ['NumberOfStudyRelatedSeries', '00201206', '', 'IS', 1],
+    ['NumberOfStudyRelatedInstances', '00201208', '', 'IS', 1],
+    ['RetrieveAETitle', '00080054', '', 'AE', 0],
+    ['StudyDescription', '00081030', '', 'LO', 1],
   ];
 
 var seriesTags = [

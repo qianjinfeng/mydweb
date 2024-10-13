@@ -1,9 +1,8 @@
-'use strict'
+import fp from 'fastify-plugin'
+import fastifyElasticsearch from '@fastify/elasticsearch';
 
-const fp = require('fastify-plugin')
-
-module.exports = fp(async function (fastify, opts) {
-    fastify.register(require('@fastify/elasticsearch'), {
+export default fp(async (fastify) => {
+    fastify.register(fastifyElasticsearch, {
         node: 'http://localhost:9200',
         auth: {  
           username: 'elastic',  
@@ -11,6 +10,7 @@ module.exports = fp(async function (fastify, opts) {
         },
         healthcheck: false
     });
+    
     fastify.decorate('getDataFromElasticsearch', async (index, query, from = 0, size = 10) => {
         try {
             const body = await fastify.elastic.search({

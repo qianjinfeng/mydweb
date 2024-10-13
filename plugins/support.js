@@ -1,14 +1,12 @@
-'use strict'
-
-const fp = require('fastify-plugin')
+import fp from 'fastify-plugin'
+import { DicomMetaDictionary } from "../util/DicomMetaDictionary.js";
 
 // the use of fastify-plugin is required to be able
 // to export the decorators to the outer scope
 
-module.exports = fp(async function (fastify, opts) {
+export default fp(async function (fastify, opts) {
 
-
-  // needs to support query with following keys
+ // needs to support query with following keys
   // StudyDate 00080020
   // StudyTime 00080030
   // AccessionNumber 00080050
@@ -22,23 +20,22 @@ module.exports = fp(async function (fastify, opts) {
   fastify.decorate('getQIDOStudies', async (request, reply) => {
     try {
       const res = [];
-
-      const newobj = {};
-      newobj['00080005'] = { vr: 'CS'};
-      newobj['00080005'].Value = [];
-      newobj['00080005'].Value.push('instudies');
-      res.push(newobj);
-  
-      
-
+   
       const index = request.query.index || 'studies';
       const query = request.query.query || { match_all: {} };
       const from = parseInt(request.query.from) || 0;
       const size = parseInt(request.query.size) || 10;
   
       const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
+      fastify.log.info(rawData.total);
+      rawData.hits.forEach((value) => {
+        const study = DicomMetaDictionary.denaturalizeDataset(value);
+        res.push(study);
+      })
       
-      fastify.log.info(rawData);
+      //fastify.log.info(res);
+      fastify.log.info(res.length);
+      
       // const processedData = processData(rawData);
   
       // // 设置响应头中的分页信息

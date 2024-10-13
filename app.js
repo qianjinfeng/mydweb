@@ -1,31 +1,31 @@
-'use strict'
+import path from 'path'
+import AutoLoad from '@fastify/autoload'
+import { fileURLToPath } from 'url'
+import testSchema from './schemas/test_schema.json' assert { type: 'json' }
+import studiesSchema from './schemas/studies_output_schema.json' assert { type: 'json' }
 
-const path = require('node:path')
-const AutoLoad = require('@fastify/autoload')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Pass --options via CLI arguments in command to enable these options.
-const options = {}
+export const options = {}
 
-module.exports = async function (fastify, opts) {
+export default async function (fastify, opts) {
   // Place here your custom code!
 
-  // require schema jsons
-  const patientsSchema = require('./schemas/patients_output_schema.json');
-  const studiesSchema = require('./schemas/studies_output_schema.json');
-  const seriesSchema = require('./schemas/series_output_schema.json');
-  const instancesSchema = require('./schemas/instances_output_schema.json');
-  const testSchema = require('./schemas/test_schema.json');
-
-  // add schemas to fastify to use by id
-  fastify.addSchema(patientsSchema);
-  fastify.addSchema(studiesSchema);
-  fastify.addSchema(seriesSchema);
-  fastify.addSchema(instancesSchema);
-  fastify.addSchema(testSchema);
-
-  // 打印 schema 以进行调试
-  // console.log(JSON.stringify(testSchema, null, 2));
-
+    // require schema jsons
+    // const patientsSchema = await import('./schemas/patients_output_schema.json' assert { type: 'json' });
+    // const studiesSchema = await import('./schemas/studies_output_schema.json' assert { type: 'json' });
+    // const seriesSchema = await import('./schemas/series_output_schema.json' assert { type: 'json' }); 
+    // const instancesSchema = await import('./schemas/instances_output_schema.json' assert { type: 'json' }); 
+    // const testSchema = await import('./schemas/test_schema.json' assert { type: 'json' }); 
+  
+    // add schemas to fastify to use by id
+    // fastify.addSchema(patientsSchema);
+    fastify.addSchema(studiesSchema);
+    // fastify.addSchema(seriesSchema);
+    // fastify.addSchema(instancesSchema);
+    fastify.addSchema(testSchema);
 
   // Do not touch the following lines
 
@@ -44,5 +44,3 @@ module.exports = async function (fastify, opts) {
     options: Object.assign({}, opts)
   })
 }
-
-module.exports.options = options
