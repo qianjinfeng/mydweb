@@ -16,6 +16,9 @@ export default fp(async function (fastify, opts) {
   // PatientID 00100020
   // StudyInstanceUID 0020000D
   // StudyID 00200010
+  // 00200011
+  // 00201208
+  // 00201209
   // add accessor methods with decorate
   fastify.decorate('getQIDOStudies', async (request, reply) => {
     try {
@@ -28,10 +31,26 @@ export default fp(async function (fastify, opts) {
   
       const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
       fastify.log.info(rawData.total);
-      rawData.hits.forEach((value) => {
-        const study = DicomMetaDictionary.denaturalizeDataset(value);
+
+      for (let i = 0; i < rawData.hits.length; i++) {
+        const study = DicomMetaDictionary.denaturalizeDataset(rawData.hits[i]);
+        const query = { match: {"StudyInstanceUID": study["0020000D"].Value[0]}};
+        const totalInstances = await fastify.getDataCountFromElasticsearch('instances', query);
+        const tag = {};
+        tag['vr'] = "IS";
+        const value = [];
+        value.push(totalInstances.total);
+        tag['Value'] = value;
+        study["00201208"] = tag;
+
         res.push(study);
-      })
+      }
+      // async function processAllItems() {
+      //   await Promise.all(rawData.map(async (item) => {
+
+      //   }));
+      // }
+      // processAllItems();
       
       fastify.log.info(res);
       fastify.log.info(res.length);
@@ -52,8 +71,6 @@ export default fp(async function (fastify, opts) {
       reply.status(500).send({ error: error.message });
     }
 
-
-
   });
 
   fastify.decorate('getQIDOSeries', async (request, reply) => {
@@ -61,17 +78,24 @@ export default fp(async function (fastify, opts) {
       const res = [];
    
       const index = request.query.index || 'series';
-      const query = request.query.query || { match_all: {} };
+      const query = request.query.query || { match: {"StudyInstanceUID": request.params.study} };
       const from = parseInt(request.query.from) || 0;
       const size = parseInt(request.query.size) || 10;
   
       const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
       fastify.log.info(rawData.total);
-      rawData.hits.forEach((value) => {
-        const study = DicomMetaDictionary.denaturalizeDataset(value);
-        res.push(study);
-      })
-      
+
+      for (let i = 0; i < rawData.hits.length; i++) {
+          const series = DicomMetaDictionary.denaturalizeDataset(rawData.hits[i]);
+          const query = { match: {"SeriesInstanceUID": series["0020000E"].Value[0]}};
+          const totalInstances = await fastify.getDataCountFromElasticsearch('instances', query);
+          const tag = {};
+          tag['vr'] = "IS";
+          tag['Value'] = [totalInstances.total];
+          series["00201209"] = tag;
+          res.push(series);
+      }
+
       fastify.log.info(res);
       fastify.log.info(res.length);
       

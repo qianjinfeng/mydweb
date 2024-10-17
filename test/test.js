@@ -1,4 +1,4 @@
-import schema from './schemas/instances_output_schema.json' assert { type: 'json' }
+import schema from '../schemas/instances_output_schema.json' assert { type: 'json' }
 import data from './aItem.json' assert { type: 'json' }
 import { DicomMetaDictionary } from "../util/DicomMetaDictionary.js";
 

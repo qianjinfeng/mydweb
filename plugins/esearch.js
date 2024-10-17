@@ -30,4 +30,24 @@ export default fp(async (fastify) => {
             throw new Error('Failed to fetch data from Elasticsearch');
           }
       });
+
+
+      fastify.decorate('getDataCountFromElasticsearch', async (index, query) => {
+        try {
+            const body = await fastify.elastic.search({
+              index,
+              body: {
+                track_total_hits: true,
+                query
+              },
+              size: 0 // 不需要实际的文档，只需要总数
+            });
+            return {
+              total: body.hits.total.value
+            };
+          } catch (error) {
+            fastify.log.error(error);
+            throw new Error('Failed to fetch data from Elasticsearch');
+          }
+      });
   })
