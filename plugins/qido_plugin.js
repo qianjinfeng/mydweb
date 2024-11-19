@@ -27,7 +27,7 @@ export default fp(async function (fastify, opts) {
       const index = request.query.index || 'studies';
       const query = request.query.query || { match_all: {} };
       const from = parseInt(request.query.offset) || 0;
-      const size = parseInt(request.query.limit) || 10;
+      const size = parseInt(request.query.limit) || 100;
   
       const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
       fastify.log.info(rawData.total);
@@ -80,7 +80,7 @@ export default fp(async function (fastify, opts) {
       const index = request.query.index || 'series';
       const query = request.query.query || { match: {"StudyInstanceUID": request.params.study} };
       const from = parseInt(request.query.offset) || 0;
-      const size = parseInt(request.query.limit) || 10;
+      const size = parseInt(request.query.limit) || 100;
   
       const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
       fastify.log.info(rawData.total);
@@ -124,7 +124,7 @@ export default fp(async function (fastify, opts) {
       const index = request.query.index || 'instances';
       const query = request.query.query || { match_all: {} };
       const from = parseInt(request.query.offset) || 0;
-      const size = parseInt(request.query.limit) || 10;                                                                               
+      const size = parseInt(request.query.limit) || 1000;                                                                               
   
       const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
       fastify.log.info(rawData.total);

@@ -153,7 +153,7 @@ export default fp(async function (fastify, opts) {
           const index = request.query.index || 'instances';
           const query = request.query.query || { match: {"StudyInstanceUID": request.params.study} };
           const from = parseInt(request.query.from) || 0;
-          const size = parseInt(request.query.size) || 100;
+          const size = parseInt(request.query.size) || 1000;
       
           const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
           for (let i = 0; i < rawData.hits.length; i++) {
@@ -173,7 +173,7 @@ export default fp(async function (fastify, opts) {
           const index = request.query.index || 'instances';
           const query = request.query.query || { match: {"StudyInstanceUID": request.params.study, "SeriesInstanceUID": request.params.series} };
           const from = parseInt(request.query.from) || 0;
-          const size = parseInt(request.query.size) || 10;
+          const size = parseInt(request.query.size) || 100;
       
           const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
 
@@ -195,7 +195,7 @@ export default fp(async function (fastify, opts) {
           const index = request.query.index || 'instances';
           const query = request.query.query || { match: {"StudyInstanceUID": request.params.study,"SeriesInstanceUID": request.params.series, "SopInstanceUID": request.params.instance} };
           const from = parseInt(request.query.from) || 0;
-          const size = parseInt(request.query.size) || 10;
+          const size = parseInt(request.query.size) || 100;
       
           const rawData = await fastify.getDataFromElasticsearch(index, query, from, size);
           rawData.hits.forEach((value) => {
