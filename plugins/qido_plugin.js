@@ -24,7 +24,7 @@ export default fp(async function (fastify, opts) {
     try {
       const res = [];
    
-      const index = request.query.index || 'studies';
+      const index = request.query.index || 'study';
       const query = request.query.query || { match_all: {} };
       const from = parseInt(request.query.offset) || 0;
       const size = parseInt(request.query.limit) || 100;
@@ -35,7 +35,7 @@ export default fp(async function (fastify, opts) {
       for (let i = 0; i < rawData.hits.length; i++) {
         const study = DicomMetaDictionary.denaturalizeDataset(rawData.hits[i]);
         const query = { match: {"StudyInstanceUID": study["0020000D"].Value[0]}};
-        const totalInstances = await fastify.getDataCountFromElasticsearch('instances', query);
+        const totalInstances = await fastify.getDataCountFromElasticsearch('instance', query);
         const tag = {};
         tag['vr'] = "IS";
         const value = [];
@@ -88,7 +88,7 @@ export default fp(async function (fastify, opts) {
       for (let i = 0; i < rawData.hits.length; i++) {
           const series = DicomMetaDictionary.denaturalizeDataset(rawData.hits[i]);
           const query = { match: {"SeriesInstanceUID": series["0020000E"].Value[0]}};
-          const totalInstances = await fastify.getDataCountFromElasticsearch('instances', query);
+          const totalInstances = await fastify.getDataCountFromElasticsearch('instance', query);
           const tag = {};
           tag['vr'] = "IS";
           tag['Value'] = [totalInstances.total];
@@ -121,7 +121,7 @@ export default fp(async function (fastify, opts) {
     try {
       const res = [];
    
-      const index = request.query.index || 'instances';
+      const index = request.query.index || 'instance';
       const query = request.query.query || { match_all: {} };
       const from = parseInt(request.query.offset) || 0;
       const size = parseInt(request.query.limit) || 1000;                                                                               

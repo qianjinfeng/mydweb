@@ -150,7 +150,7 @@ export default fp(async function (fastify, opts) {
         try {
           const res = [];
    
-          const index = request.query.index || 'instances';
+          const index = request.query.index || 'instance';
           const query = request.query.query || { match: {"StudyInstanceUID": request.params.study} };
           const from = parseInt(request.query.from) || 0;
           const size = parseInt(request.query.size) || 1000;
@@ -170,7 +170,7 @@ export default fp(async function (fastify, opts) {
         try {
           const res = [];
    
-          const index = request.query.index || 'instances';
+          const index = request.query.index || 'instance';
           const query = request.query.query || { match: {"StudyInstanceUID": request.params.study, "SeriesInstanceUID": request.params.series} };
           const from = parseInt(request.query.from) || 0;
           const size = parseInt(request.query.size) || 100;
@@ -192,7 +192,7 @@ export default fp(async function (fastify, opts) {
         try {
           const res = [];
    
-          const index = request.query.index || 'instances';
+          const index = request.query.index || 'instance';
           const query = request.query.query || { match: {"StudyInstanceUID": request.params.study,"SeriesInstanceUID": request.params.series, "SopInstanceUID": request.params.instance} };
           const from = parseInt(request.query.from) || 0;
           const size = parseInt(request.query.size) || 100;
