@@ -14,13 +14,6 @@ export const options = {}
 
 export default async function (fastify, opts) {
   // Place here your custom code!
-
-    // require schema jsons
-    // const patientsSchema = await import('./schemas/patients_output_schema.json' assert { type: 'json' });
-    // const studiesSchema = await import('./schemas/studies_output_schema.json' assert { type: 'json' });
-    // const seriesSchema = await import('./schemas/series_output_schema.json' assert { type: 'json' }); 
-    // const instancesSchema = await import('./schemas/instances_output_schema.json' assert { type: 'json' }); 
-    // const testSchema = await import('./schemas/test_schema.json' assert { type: 'json' }); 
   
     // add schemas to fastify to use by id
     // fastify.addSchema(patientsSchema);
